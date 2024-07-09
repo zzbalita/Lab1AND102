@@ -13,14 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import phcom.phlynk.lab1and102.adapter.ProductRecycleViewAdapter;
 import phcom.phlynk.lab1and102.database.DbHandler;
 
-public class MainActivity extends AppCompatActivity implements phcom.phlynk.lab1and102.ProductRecyclerViewAdapter.OnProductClickListener {
+public class MainActivity extends AppCompatActivity implements ProductRecycleViewAdapter.OnProductClickListener {
     private EditText productNameEdt, productPriceEdt, productQuatityEdt;
     private Button addProductBtn;
     private RecyclerView recyclerView;
     private DbHandler dbHandler;
-    private phcom.phlynk.lab1and102.ProductRecyclerViewAdapter productAdapter;
+    private ProductRecycleViewAdapter productAdapter;
     private List<Product> productList;
     private int selectedProductId = -1;
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements phcom.phlynk.lab1
 
         dbHandler = new DbHandler(this);
         productList = dbHandler.getAllProducts();
-        productAdapter = new phcom.phlynk.lab1and102.ProductRecyclerViewAdapter(this, productList, this);
+        productAdapter = new ProductRecycleViewAdapter(this, productList, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(productAdapter);
 
