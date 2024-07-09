@@ -12,34 +12,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Ten san pham" />
+        android:hint="Product Name" />
 
     <EditText
         android:id="@+id/edtPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Gia thanh" />
+        android:hint="Price" />
 
     <EditText
         android:id="@+id/edtQuatity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="So luong" />
+        android:hint="Quantity" />
 
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Them san pham"
+        android:text="Add Product"
         android:textAllCaps="false" />
 
-    <ListView
-        android:id="@+id/lvProducts"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp" />
-
 </LinearLayout>

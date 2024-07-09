@@ -54,7 +54,7 @@ public class DbHandler extends SQLiteOpenHelper {
 
     public ArrayList<Product> getAllProducts() {
         ArrayList<Product> productList = new ArrayList<>();
-        String selectQuery = "SELECT * FROM " + TABLE_NAME;
+        String selectQuery   = "SELECT * FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -71,5 +71,22 @@ public class DbHandler extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return productList;
+    }
+    public void updateProduct(int id, String productName, Float productPrice, Integer productQuatity) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(NAME_COL, productName);
+        values.put(PRICE_COL, productPrice);
+        values.put(QUATITY_COL, productQuatity);
+
+        db.update(TABLE_NAME, values, ID_COL + " = ?", new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    public void deleteProduct(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME, ID_COL + " = ?", new String[]{String.valueOf(id)});
+        db.close();
     }
 }
